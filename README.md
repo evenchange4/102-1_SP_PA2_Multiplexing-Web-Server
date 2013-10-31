@@ -39,7 +39,9 @@ $ > GET /large1 HTTP/1.1
 ![Browser Busy](https://raw.github.com/evenchange4/102-1_SP_PA2_Multiplexing-Web-Server/master/image/browser%20busy%20return%20-1.png)
 
 ### Solution
-因為這個情況有時候會發生會時候不會，所以在考慮上需要把 connection 的 `File Descriptor (fd)` 給 `FD_SET` 到 `$writefds` 的 set 裏面，然後當碰到 `-1`，的情況的時候 
+因為這個情況有時候會發生會時候不會，所以在考慮上需要把 connection 的 `File Descriptor (fd)` 給 `FD_SET` 到 `$writefds` 的 set 裏面，然後當碰到 `-1`，的情況的時候就可以直接排除 `-1` 的回傳結果了。
+
+![Solution busy (-1 情況)](https://raw.github.com/evenchange4/102-1_SP_PA2_Multiplexing-Web-Server/master/image/solution%20busy.png)
 
 
 ## Discussions
