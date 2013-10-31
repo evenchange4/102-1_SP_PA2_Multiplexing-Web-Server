@@ -14,7 +14,7 @@ The Assignment 2 report from NTU102-1 [Systems Programming (Cloud Computing Prog
 ### GCC compiler
 
 ```
-$ gcc -Wall sp_hw1_httpd.c -o run
+$ gcc -Wall sp_pa2_httpd.c -o run
 ```
 
 ### run httpd server [`port` `log_file`]
@@ -30,10 +30,14 @@ $ telnet linux19.csie.ntu.edu.tw 8002
 $ > GET /large1 HTTP/1.1
 ```
 
-![telnet connect]()
+![telnet connect](https://raw.github.com/evenchange4/102-1_SP_PA2_Multiplexing-Web-Server/master/image/telnet%20connect.png)
 
 - 
 
 ## Problem description
+### Browser Busy
+在連線建立完成，開始傳輸（write）資料的時候，不知道為什麼 telnet 都可以很順利的完成，但是 Browser 總是會出現 Broken pipe，然後只印出部分的內容，這個問題讓我想了很久，最後請教了助教才發現原來會出現 Browser busy 的情況，所以 `nwritten = write( requestP[conn_fd].conn_fd,` 回傳的值可能會是 `-1`，後來我也發現的確會如此。
 
-## solution, discussions
+### solution
+
+## discussions
