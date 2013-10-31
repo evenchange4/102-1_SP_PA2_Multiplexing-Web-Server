@@ -48,7 +48,7 @@ $ > GET /large1 HTTP/1.1
 ![Solution busy (-1 情況)](https://raw.github.com/evenchange4/102-1_SP_PA2_Multiplexing-Web-Server/master/image/solution%20busy.png)
 
 ## Result
-按造 Assignment 2 -- Multiplexing Web Server `Sample Input.pdf` 這份件依序做模擬操作的結果如下圖：
+按照 Assignment 2 -- Multiplexing Web Server `Sample Input.pdf` 這份件依序做模擬操作的結果如下圖：
 
 ![large files Congratulations (browser)](https://raw.github.com/evenchange4/102-1_SP_PA2_Multiplexing-Web-Server/master/image/browser%20Congratulations.png)
 
@@ -56,3 +56,9 @@ $ > GET /large1 HTTP/1.1
 
 
 ## Discussions
+
+## Reference
+- [Handle multiple socket connections with fd_set and select on Linux](http://www.binarytides.com/multiple-socket-connections-fdset-select-linux/)
+- [Is a return value of 0 from write(2) in C an error](http://stackoverflow.com/questions/2176443/is-a-return-value-of-0-from-write2-in-c-an-error)
+- [◎read與write系統呼叫◎](http://bbs3.nsysu.edu.tw/txtVersion/treasure/mis-OS/M.952573483.A/M.952663880.P.html)
+- ptt2 `看板《SysProgram` 的精華區。
