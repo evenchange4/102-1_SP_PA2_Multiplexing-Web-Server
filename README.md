@@ -49,13 +49,14 @@ $ > GET /large1 HTTP/1.1
 ![Solution busy (-1 情況)](https://raw.github.com/evenchange4/102-1_SP_PA2_Multiplexing-Web-Server/master/image/solution%20busy.png)
 
 ## Result
-按照 Assignment 2 -- Multiplexing Web Server `Sample Input.pdf` 這份件依序做模擬操作的結果如下圖：
+按照 Assignment 2 -- Multiplexing Web Server `Sample Input.pdf` 這份文件依序做模擬操作的結果如下圖：
 
 ![large files Congratulations (browser)](https://raw.github.com/evenchange4/102-1_SP_PA2_Multiplexing-Web-Server/master/image/browser%20Congratulations.png)
 
 ![large files Congratulations (telnet)](https://raw.github.com/evenchange4/102-1_SP_PA2_Multiplexing-Web-Server/master/image/telnet%20Congratulations.png)
 
 ## Discussions
+這次的實作讓我學習到非常多的 C system call function，但也因為如此過程實在非常的不順利，也查了很多使用 function 的資料。但整體來說這次是一個有趣的作業，以前寫網頁都是直接拿現成的軟體來架站，但是這次終於有比較清楚 Http server 到底是怎麼運作的了，從一個 `A Simple Web Server` 單一連線並且限制傳輸大小的 code 要改成 `A Multiplexing Web Server`多人連線不會被 block 住並且沒有檔案傳輸的限制，做完非常有成就感！
 
 ## Reference
 - [Handle multiple socket connections with fd_set and select on Linux](http://www.binarytides.com/multiple-socket-connections-fdset-select-linux/)
