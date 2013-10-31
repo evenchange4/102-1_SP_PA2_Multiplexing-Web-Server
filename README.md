@@ -1,4 +1,4 @@
-# Multiplexing-Web-Server
+# Multiplexing Web Server
 
 The Assignment 2 report from NTU102-1 [Systems Programming (Cloud Computing Program)](http://www.csie.ntu.edu.tw/~pjcheng/course/sp2013cc/) course
 
@@ -11,10 +11,11 @@ The Assignment 2 report from NTU102-1 [Systems Programming (Cloud Computing Prog
 
 ## 如何執行
 
-### 1. GCC compiler
+### 1. GCC compiler `makefile`
 
 ```
-$ gcc -Wall sp_pa2_httpd.c -o run
+$ make
+>> gcc -Wall sp_pa2_httpd.c -o run
 ```
 
 ### 2. run httpd server [`port` `log_file`]
@@ -54,11 +55,11 @@ $ > GET /large1 HTTP/1.1
 
 ![large files Congratulations (telnet)](https://raw.github.com/evenchange4/102-1_SP_PA2_Multiplexing-Web-Server/master/image/telnet%20Congratulations.png)
 
-
 ## Discussions
 
 ## Reference
 - [Handle multiple socket connections with fd_set and select on Linux](http://www.binarytides.com/multiple-socket-connections-fdset-select-linux/)
 - [Is a return value of 0 from write(2) in C an error](http://stackoverflow.com/questions/2176443/is-a-return-value-of-0-from-write2-in-c-an-error)
 - [◎read與write系統呼叫◎](http://bbs3.nsysu.edu.tw/txtVersion/treasure/mis-OS/M.952573483.A/M.952663880.P.html)
-- ptt2 `看板《SysProgram` 的精華區。
+- ptt2 `看板《SysProgram》` 的精華區。
+- [Makefile簡易教學...](http://kevincrazy.pixnet.net/blog/post/29780477-makefile%E7%B0%A1%E6%98%93%E6%95%99%E5%AD%B8...)
