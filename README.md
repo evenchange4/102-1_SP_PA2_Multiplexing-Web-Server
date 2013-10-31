@@ -33,15 +33,22 @@ $ > GET /large1 HTTP/1.1
 ![telnet connect](https://raw.github.com/evenchange4/102-1_SP_PA2_Multiplexing-Web-Server/master/image/telnet%20connect.png)
 
 ## Problem description
-### Browser Busy
+### Browser Busy：
 在連線建立完成，開始傳輸（write）資料的時候，不知道為什麼 telnet 都可以很順利的完成，但是 Browser 總是會出現 Broken pipe，然後只印出部分的內容，這個問題讓我想了很久，最後請教了助教才發現原來會出現 Browser busy 的情況，所以 `nwritten = write( requestP[conn_fd].conn_fd,` 回傳的值可能會是 `-1`，後來我也發現的確會如此。
 
 ![Browser Busy](https://raw.github.com/evenchange4/102-1_SP_PA2_Multiplexing-Web-Server/master/image/browser%20busy%20return%20-1.png)
 
-### Solution
+### Solution：
 因為這個情況有時候會發生會時候不會，所以在考慮上需要把 connection 的 `File Descriptor (fd)` 給 `FD_SET` 到 `$writefds` 的 set 裏面，然後當碰到 `-1`，的情況的時候就可以直接排除 `-1` 的回傳結果了。
 
 ![Solution busy (-1 情況)](https://raw.github.com/evenchange4/102-1_SP_PA2_Multiplexing-Web-Server/master/image/solution%20busy.png)
+
+## Result
+按造 Assignment 2 -- Multiplexing Web Server `Sample Input.pdf` 這份件依序做模擬操作的結果如下圖：
+
+![large files Congratulations (browser)](https://raw.github.com/evenchange4/102-1_SP_PA2_Multiplexing-Web-Server/master/image/browser%20Congratulations.png)
+
+![large files Congratulations (telnet)](https://raw.github.com/evenchange4/102-1_SP_PA2_Multiplexing-Web-Server/master/image/telnet%20Congratulations.png)
 
 
 ## Discussions
