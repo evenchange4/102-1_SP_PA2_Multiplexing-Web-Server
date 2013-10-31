@@ -183,17 +183,12 @@ main( int argc, char** argv )
 
         for (i = 0; i < max_clients; i++) {
             conn_fd = client_socket[i];
-
+            // 排除 -1 的情況
             if (FD_ISSET(conn_fd , &writefds)){
                 if (cur_size < (int) requestP[conn_fd].buf_len){
                     nwritten = write( requestP[conn_fd].conn_fd, requestP[conn_fd].buf + cur_size, (int) requestP[conn_fd].buf_len - cur_size );
                     cur_size += nwritten;
                     fprintf(stderr, " >> nwritten / buf_len = %i / %i\n", nwritten, (int) requestP[conn_fd].buf_len);
-                    
-                    if( nwritten < 0 ){ //browser busy
-                        FD_SET(conn_fd , &writefds);
-                        break;
-                    }
                 }
                 else if((cur_size != 0) && (cur_size == (int) requestP[conn_fd].buf_len)){
                     fprintf(stderr, "%i \\ %i \n", cur_size, (int) requestP[conn_fd].buf_len);
@@ -227,14 +222,7 @@ main( int argc, char** argv )
             	            (int) requestP[conn_fd].buf_len, requestP[conn_fd].conn_fd );
                             // 初始要傳輸的檔案大小
                             cur_size = 0;
-            if (FD_ISSET(conn_fd , &writefds)){
-                while (cur_size < (int) requestP[conn_fd].buf_len){
-                    nwritten = write( requestP[conn_fd].conn_fd, requestP[conn_fd].buf + cur_size, (int) requestP[conn_fd].buf_len - cur_size );
-                    cur_size += nwritten;
-                    fprintf(stderr, " >> nwritten / buf_len = %i / %i\n", nwritten, (int) requestP[conn_fd].buf_len);
-                    
-}
-                }
+
                         break;
             	    }
                 }
