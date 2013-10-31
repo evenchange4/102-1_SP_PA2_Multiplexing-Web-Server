@@ -32,7 +32,7 @@ $ > GET /large1 HTTP/1.1
 
 ![telnet connect](https://raw.github.com/evenchange4/102-1_SP_PA2_Multiplexing-Web-Server/master/image/telnet%20connect.png)
 
-### Browser `url:port/file`
+### 4. Browser `url:port/file`
 - [http://linux19.csie.ntu.edu.tw:8002/large2](http://linux19.csie.ntu.edu.tw:8002/large2)
 
 
