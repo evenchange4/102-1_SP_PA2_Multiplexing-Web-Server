@@ -11,19 +11,19 @@ The Assignment 2 report from NTU102-1 [Systems Programming (Cloud Computing Prog
 
 ## 如何執行
 
-### GCC compiler
+### 1. GCC compiler
 
 ```
 $ gcc -Wall sp_pa2_httpd.c -o run
 ```
 
-### run httpd server [`port` `log_file`]
+### 2. run httpd server [`port` `log_file`]
 
 ```
 $ ./run 8002 logs.txt
 ```
 
-### telnet connect
+### 3. telnet connect
 
 ```
 $ telnet linux19.csie.ntu.edu.tw 8002
@@ -31,6 +31,10 @@ $ > GET /large1 HTTP/1.1
 ```
 
 ![telnet connect](https://raw.github.com/evenchange4/102-1_SP_PA2_Multiplexing-Web-Server/master/image/telnet%20connect.png)
+
+### Browser `url:port/file`
+- [http://linux19.csie.ntu.edu.tw:8002/large2](http://linux19.csie.ntu.edu.tw:8002/large2)
+
 
 ## Problem description
 ### Browser Busy：
