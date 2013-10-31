@@ -107,7 +107,6 @@ main( int argc, char** argv )
 
     // 很明顯地，這一行是要開啟一個檔案做為標準輸入的來源
 
-    printf("1231125125125");
     printf("This goes to the standard output too.\n");
 
     // Initialize http server
