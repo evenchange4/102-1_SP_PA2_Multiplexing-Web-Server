@@ -59,6 +59,7 @@ $ > GET /large1 HTTP/1.1
 
 ## Discussions
 這次的實作讓我學習到非常多的 C system call function，但也因為如此過程實在非常的不順利，也查了很多使用 function 的資料。但整體來說這次是一個有趣的作業，以前寫網頁都是直接拿現成的軟體來架站，但是這次終於有比較清楚 Http server 到底是怎麼運作的了，從一個 `A Simple Web Server` 單一連線並且限制傳輸大小的 code 要改成 `A Multiplexing Web Server`多人連線不會被 block 住並且沒有檔案傳輸的限制，做完非常有成就感！
+最後在輸出到 logs file 檔的時候又碰到了難題，不管怎麼試都不行，後來經過助教提示才發現原來忘記了 standard output 會先暫存在緩衝區，直到緩衝區滿了才會真正地寫出來，後來使用 `fflush(stdout);`才能夠立馬寫出來，這一點其實老師上課的時候有提到過，但是寫程式的時候完全忘了這件事。
 
 ## Reference
 - [Handle multiple socket connections with fd_set and select on Linux](http://www.binarytides.com/multiple-socket-connections-fdset-select-linux/)
