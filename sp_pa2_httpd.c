@@ -101,11 +101,11 @@ main( int argc, char** argv )
     }
 
     logfilenameP = argv[2];
-    int fd_out = open(logfilenameP, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-    dup2(fd_out, STDOUT_FILENO);    // standard output
+    int fd_out = open(logfilenameP, O_WRONLY | O_CREAT | O_TRUNC, 0777);
+    dup2(fd_out, 2);    // standard output
     close(fd_out);
 
-    // fprintf(stdout, "%s\n", "This goes to the standard output too.\n");
+    fprintf(stdout, "%s\n", "This goes to the standard output too.\n");
     printf("This goes to the standard output too.%d\n", fd_out);
 
     // Initialize http server
