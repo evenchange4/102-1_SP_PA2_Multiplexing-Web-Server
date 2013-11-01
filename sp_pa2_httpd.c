@@ -102,12 +102,10 @@ main( int argc, char** argv )
 
     logfilenameP = argv[2];
     int fd_out = open(logfilenameP, O_WRONLY | O_CREAT | O_TRUNC, 0777);
-    dup2(fd_out, 2);    // standard output
+    dup2(fd_out, 1);    // standard output
     close(fd_out);
 
-    fprintf(stdout, "%s\n", "This goes to the standard output too.\n");
-    printf("This goes to the standard output too.%d\n", fd_out);
-
+    fflush(stdout);
     // Initialize http server
     init_http_server( &server, (unsigned short) atoi( argv[1] ) );
 
@@ -187,7 +185,8 @@ main( int argc, char** argv )
                 if (cur_size < (int) requestP[conn_fd].buf_len){
                     nwritten = write( requestP[conn_fd].conn_fd, requestP[conn_fd].buf + cur_size, (int) requestP[conn_fd].buf_len - cur_size );
                     cur_size += nwritten;
-                    fprintf(stderr, " >> nwritten / buf_len = %i / %i\n", nwritten, (int) requestP[conn_fd].buf_len);
+                    printf(" >> nwritten / buf_len = %i / %i\n", nwritten, (int) requestP[conn_fd].buf_len);
+                    fflush(stdout);
                 }
                 else if((cur_size != 0) && (cur_size == (int) requestP[conn_fd].buf_len)){
                     fprintf(stderr, "%i \\ %i \n", cur_size, (int) requestP[conn_fd].buf_len);
