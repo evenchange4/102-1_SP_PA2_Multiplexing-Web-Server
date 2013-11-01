@@ -101,13 +101,12 @@ main( int argc, char** argv )
     }
 
     logfilenameP = argv[2];
-    int fd_log = open(logfilenameP, 0644);
-    dup2(fd_log, STDOUT_FILENO);    // standard output
-    // close(1);
+    int fd_out = open(logfilenameP, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    dup2(fd_out, STDOUT_FILENO);    // standard output
+    close(fd_out);
 
-    // 很明顯地，這一行是要開啟一個檔案做為標準輸入的來源
-
-    printf("This goes to the standard output too.\n");
+    // fprintf(stdout, "%s\n", "This goes to the standard output too.\n");
+    printf("This goes to the standard output too.%d\n", fd_out);
 
     // Initialize http server
     init_http_server( &server, (unsigned short) atoi( argv[1] ) );
